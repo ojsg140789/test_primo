@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { finalize } from 'rxjs/operators';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { QuoteService } from './quote.service';
 
@@ -12,19 +13,19 @@ export class HomeComponent implements OnInit {
   quote: string | undefined;
   isLoading = false;
 
-  constructor(private quoteService: QuoteService) {}
+  formData: FormGroup;
+  numbers: Array<any> = [];
 
-  ngOnInit() {
-    this.isLoading = true;
-    this.quoteService
-      .getRandomQuote({ category: 'dev' })
-      .pipe(
-        finalize(() => {
-          this.isLoading = false;
-        })
-      )
-      .subscribe((quote: string) => {
-        this.quote = quote;
-      });
+  constructor(private fb: FormBuilder) {
+    this.formData = this.fb.group({
+      number: ['', Validators.compose([Validators.required])],
+    });
+  }
+
+  ngOnInit() {}
+
+  calculate() {
+    this.numbers = Array(5).map((x, i) => i);
+    console.log('this.numbers', this.numbers);
   }
 }

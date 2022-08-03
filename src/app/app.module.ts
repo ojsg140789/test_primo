@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -29,6 +29,7 @@ import { AppRoutingModule } from './app-routing.module';
     HomeModule,
     AuthModule,
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
+    ReactiveFormsModule,
   ],
   declarations: [AppComponent],
   providers: [

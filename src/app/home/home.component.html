@@ -1,10 +1,47 @@
-<div class="container-fluid">
-  <div class="jumbotron text-center">
-    <h1>
-      <img class="logo" src="assets/ngx-rocket-logo.png" alt="angular logo" />
-      <span translate>Hello world !</span>
-    </h1>
-    <app-loader [isLoading]="isLoading"></app-loader>
-    <q [hidden]="isLoading">{{ quote }}</q>
+<div class="container-fluid home-component">
+  <div class="row">
+    <div class="col-md-6 mx-auto mt-2 text-center">
+      <div class="card text-center">
+        <div class="card-header fs-1">Bienvenido</div>
+        <form [formGroup]="formData" (ngSubmit)="calculate()" novalidate>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6 mx-auto">
+                <div class="mb-3">
+                  <label for="number" class="form-label">Agrega un numero para conocer sus multiplos de 3, 5 y 7</label>
+                  <input
+                    type="text"
+                    [ngClass]="{
+                      'is-invalid':
+                        formData.controls['number'].status == 'INVALID' && formData.controls['number'].touched
+                    }"
+                    formControlName="number"
+                    name="number"
+                    mask="separator.0"
+                    id="number"
+                    thousandSeparator=","
+                    placeholder="Escribe aquí el número"
+                    autocomplete="off"
+                    required
+                  />
+                  <div
+                    class="invalid-feedback"
+                    *ngIf="formData.controls['number'].status == 'INVALID' && formData.controls['number'].touched"
+                  >
+                    Campo requerido
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mx-auto"></div>
+            </div>
+          </div>
+          <div class="card-footer text-end">
+            <button type="submit" class="btn btn-primary" [disabled]="!formData.valid">Calcular</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
