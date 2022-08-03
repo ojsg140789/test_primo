@@ -12,4 +12,13 @@ export const environment = {
   serverUrl: 'https://api.chucknorris.io',
   defaultLanguage: 'es-ES',
   supportedLanguages: ['es-ES'],
+  firebaseConfig: {
+    apiKey: 'AIzaSyAdeQ8C9XDH573skle1j5iBZkhdbabGb6Q',
+    authDomain: 'testprimos-9f796.firebaseapp.com',
+    projectId: 'testprimos-9f796',
+    storageBucket: 'testprimos-9f796.appspot.com',
+    messagingSenderId: '589828977270',
+    appId: '1:589828977270:web:452163c5882fc05a78e557',
+    measurementId: 'G-MVHCWP6BG5',
+  },
 };

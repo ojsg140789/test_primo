@@ -8,6 +8,10 @@ import { SharedModule } from '@shared';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore/';
+
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
 @NgModule({
@@ -19,6 +23,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     FormsModule,
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
   ],
   declarations: [HomeComponent],
 })
