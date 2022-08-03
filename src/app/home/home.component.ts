@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { finalize } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { QuoteService } from './quote.service';
@@ -17,6 +16,7 @@ export class HomeComponent implements OnInit {
   numbers: Array<any> = [];
 
   constructor(private fb: FormBuilder) {
+    //Se crea estructura de formulario
     this.formData = this.fb.group({
       number: ['', Validators.compose([Validators.required])],
     });
@@ -25,8 +25,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {}
 
   calculate() {
-    //Se crea un arreglo vacio del tamaño del número ingresado
-    this.numbers = new Array(this.formData.controls['number'].value);
-    console.log('this.numbers', this.numbers);
+    //Se crea un arreglo con los numeros del 1 al numero ingresado con ES6 con una funciona map para empezar desde el 1
+    this.numbers = Array.from({ length: this.formData.controls['number'].value }, (_, i) => i + 1);
   }
 }

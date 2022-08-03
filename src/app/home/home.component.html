@@ -34,8 +34,21 @@
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-6 mx-auto"></div>
+            <!-- Se recorre arreglo numbers para imprimir los valores y se imprimen solo los numeros donde el resultado del modulo resulte igual a 0
+            De la misma forma dependiendo del resultado de numero se agrega clase para agregar clase bg-success, bg-danger y bg-primary para los colores -->
+            <div class="row" *ngIf="numbers.length > 0">
+              <div
+                class="col-md-1"
+                *ngFor="let item of numbers; index as i"
+                [ngClass]="{ 'display-none': item % 3 != 0 || item % 5 != 0 || item % 7 != 0 }"
+              >
+                <span
+                  class="badge rounded-pill bg-primary"
+                  [ngClass]="{ 'bg-success': item % 3 == 0, 'bg-danger': item % 5 == 0, 'bg-primary': item % 7 == 0 }"
+                  *ngIf="item % 3 == 0 || item % 5 == 0 || item % 7 == 0"
+                  >{{ item }}</span
+                >
+              </div>
             </div>
           </div>
           <div class="card-footer text-end">
