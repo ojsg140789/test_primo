@@ -25,7 +25,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {}
 
   calculate() {
-    this.numbers = Array(5).map((x, i) => i);
+    //Se crea un arreglo vacio del tamaño del número ingresado
+    this.numbers = new Array(this.formData.controls['number'].value);
     console.log('this.numbers', this.numbers);
   }
 }
