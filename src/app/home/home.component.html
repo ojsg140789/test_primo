@@ -34,20 +34,26 @@
                 </div>
               </div>
             </div>
-            <!-- Se recorre arreglo numbers para imprimir los valores y se imprimen solo los numeros donde el resultado del modulo resulte igual a 0
-            De la misma forma dependiendo del resultado de numero se agrega clase para agregar clase bg-success, bg-danger y bg-primary para los colores -->
-            <div class="row" *ngIf="numbers.length > 0">
-              <div
-                class="col-md-1"
-                *ngFor="let item of numbers; index as i"
-                [ngClass]="{ 'display-none': item % 3 != 0 || item % 5 != 0 || item % 7 != 0 }"
-              >
+
+            <div class="row">
+              <div class="col-md-12">
+                <!-- Dependiendo del valor valor calculado se agrega el color a la propiedad color y con ngClass verificamos para agregar la clase que da el color -->
                 <span
-                  class="badge rounded-pill bg-primary"
-                  [ngClass]="{ 'bg-success': item % 3 == 0, 'bg-danger': item % 5 == 0, 'bg-primary': item % 7 == 0 }"
-                  *ngIf="item % 3 == 0 || item % 5 == 0 || item % 7 == 0"
-                  >{{ item }}</span
+                  class="badge"
+                  [ngClass]="{
+                    'bg-primary': multiplos.color == 'azul',
+                    'bg-danger': multiplos.color == 'rojo',
+                    'bg-success': multiplos.color == 'verde'
+                  }"
+                  >{{ multiplos.number }}
+                  <span *ngIf="multiplos.multiplos.length > 1">
+                    <span>Multiplos: [</span
+                    ><span *ngFor="let item of multiplos.multiplos; let last = last"
+                      >{{ item }}<span *ngIf="!last">, </span></span
+                    >]
+                  </span></span
                 >
+                <span *ngIf="multiplos.color == 'none'">Sin multiplos</span>
               </div>
             </div>
           </div>
