@@ -47,7 +47,6 @@ export class HomeComponent implements OnInit {
       this.multiplos.multiplos.push(7);
     }
     this.multiplos.color = color ? color : 'none';
-    console.log('this.multiplos', this.multiplos);
 
     //Cada que se realiza un calculo se agrega un documento a la base de datos
     this.store
